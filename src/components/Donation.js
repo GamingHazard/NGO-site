@@ -5,43 +5,50 @@ import axios from "axios";
 import "../styles/Donation.css";
 
 const Donation = () => {
-  // States to handle form fileds
+  // States to handle form fields
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState("");
+  const [currency, setCurrency] = useState("USD");
 
-  // states to check api req status
-  const [isLoading, setIsloading] = useState(false);
+  // States to check API request status
+  const [isLoading, setIsLoading] = useState(false);
 
   // Error
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
 
   // Handle form submission
-  const HandleFormSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const data = { email, fullName, amount };
-    setIsloading(true);
+    const data = { email, fullName, amount, currency };
+    setIsLoading(true);
     setIsError(false);
-    if (email === "" || fullName === "" || amount === null) {
-      setIsloading(false);
+    if (email === "" || fullName === "" || amount === "") {
+      setIsLoading(false);
       setError("Please Fill All Fields");
       setIsError(true);
     } else {
-      const apiReq = await axios.post(
-        "/api/payment/initialize-transaction",
-        data
-      );
-      if (apiReq) {
-        window.location = apiReq.data.data.authorization_url;
-        setIsloading(false);
+      try {
+        const apiReq = await axios.post(
+          "/api/payment/initialize-transaction",
+          data
+        );
+        if (apiReq) {
+          window.location = apiReq.data.data.authorization_url;
+        }
+      } catch (error) {
+        setError("An error occurred. Please try again.");
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
 
   return (
-    <div className="main__container">
-      <form onSubmit={HandleFormSubmit}>
+    <div className="form">
+      <form onSubmit={handleFormSubmit}>
         {isError && <h1 className="warning">{error}</h1>}
         <div className="form__group">
           <label htmlFor="email">Email :</label> <br />
@@ -53,32 +60,47 @@ const Donation = () => {
           />
         </div>
         <div className="form__group">
-          <label htmlFor="fullName">FullName :</label> <br />
+          <label htmlFor="fullName">Full Name :</label> <br />
           <input
             type="text"
             id="fullName"
-            placeholder="Cathrine James"
+            placeholder="Catherine James"
             onChange={(e) => setFullName(e.target.value)}
           />
         </div>
         <div className="form__group">
-          <label htmlFor="amount">Amount GH₵: </label> <br />
+          <label htmlFor="currency">Currency :</label> <br />
+          <select
+            id="currency"
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="NGN">NGN</option>
+            {/* Add more currencies as needed */}
+          </select>
+        </div>
+        <div className="form__group">
+          <label htmlFor="amount">Amount Donated:</label> <br />
           <input
-            type="Number"
+            type="number"
             id="amount"
             placeholder="100"
             onChange={(e) => setAmount(e.target.value)}
+            min="0"
+            step="any"
           />
         </div>
         <div className="form__group">
           {isLoading ? (
-            <button>
+            <button disabled>
               <LoopIcon /> Processing......
             </button>
           ) : (
             <button type="submit">
-              <PaymentIcon />
-              Continue
+              <PaymentIcon /> Continue
             </button>
           )}
         </div>

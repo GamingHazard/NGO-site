@@ -10,14 +10,16 @@
 
 h1 {
   font-family: "Roboto", sans-serif;
+  
 }
 
 p {
   font-family: "Noto Sans JP", sans-serif;
+   margin-left: 16px;
 }
 
 .main__container {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
 }
 

@@ -7,7 +7,7 @@ const YoutubeVideo = () => {
       <div className="youtube__container">
         <iframe
           width="856"
-          height="300"
+          height="500"
           title="Youtube video"
           src="https://www.youtube.com/embed/Y8NAffsYvhc"
           frameborder="0"

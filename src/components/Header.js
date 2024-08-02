@@ -11,12 +11,12 @@ const Header = ({ toggleNav, showNav }) => {
         <div className="header__container">
           <div className="brand__logo">
             <h1 className="logo">
-              <NavLink to="/">Help❤️</NavLink>
+              <NavLink to="/">Save a Soul ❤️</NavLink>
             </h1>
           </div>
           <nav className="header__nav">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/">About</NavLink>
+            <NavLink to="about">About</NavLink>
             <NavLink to="/">Blog</NavLink>
             <NavLink to="/donate-to-make-a-change" className="donate__btn">
               Donate

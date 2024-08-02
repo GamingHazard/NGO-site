@@ -6,7 +6,7 @@ const WriteUp = () => {
   return (
     <div className="main__container">
       <div className="writeup__container">
-        <h1>Be The Change You Want In The World</h1>
+        <h1 style={{textAlign:'center',}}>Be The Change You Want In The World</h1>
         <p>
           Anike Foundation welcomes individuals or organizations who want to
           join our effort to develop education in Africa.

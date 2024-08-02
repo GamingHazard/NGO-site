@@ -1,6 +1,6 @@
 .writeup__container {
   max-width: 95%;
-  margin: 10px auto;
+  
 }
 
 .writeup__container h1 {
@@ -18,6 +18,10 @@
 }
 
 .writeup__donate__button {
+  margin-top: 20px;
+  margin: 10px;
+  width: 100%;
+  align-self: center;
   margin-top: 20px;
 }
 

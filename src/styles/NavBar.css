@@ -1,5 +1,7 @@
+.main__container {width: 100%;}
 .main__container .nav__links {
   z-index: 1;
+
 }
 
 .nav__links {
@@ -8,7 +10,7 @@
 }
 
 .main__container .nav__links {
-  background-color: #ccc;
+  background-color: #b61313;
   padding: 0 20px;
   width: 100%;
 
