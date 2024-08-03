@@ -7,8 +7,8 @@ import "../styles/Footer.css";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <footer>
+    <div >
+      <footer className="main__container">
         <div className="footer__items">
           <div className="footer__brand">
             <h2>Save a Soul ❤️</h2>
@@ -16,14 +16,16 @@ const Footer = () => {
         </div>
         <div className="footer__items">
           <div className="footer__header">
-            <h3>Find Us</h3>
-          </div>
-          <div className="footer__features">
-            <ul>
-              <li>Accra, Ghana</li>
-              <li>East Legon</li>
-              <li>P. O. Box 201</li>
-            </ul>
+            <div className="footer__header">
+              <h3>Find Us</h3>
+            </div>
+            <div className="footer__features">
+              <ul>
+                <li>Accra, Ghana</li>
+                <li>East Legon</li>
+                <li>P. O. Box 201</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="footer__items">
@@ -34,7 +36,7 @@ const Footer = () => {
             <ul>
               <li>Our Origin</li>
               <li>Our Board</li>
-              <li>Brand Guidelines</li>
+              <li>Brand Guidlines</li>
               <li>Contact Us</li>
             </ul>
           </div>
